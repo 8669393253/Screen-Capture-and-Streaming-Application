@@ -1,0 +1,56 @@
+Requirements for the Client-Side (Screen Capture and Sender)
+
+The client script relies on the following Python libraries:
+
+1. `pyautogui`: For capturing the screen.
+2. `cv2` (OpenCV): For handling image processing (converting between color spaces, displaying the image).
+3. `numpy`: For handling image arrays (since `pyautogui.screenshot()` returns a `PIL` image, which is then converted to a NumPy array).
+4. `pickle`: For serializing (converting) the captured image into a byte stream.
+5. `struct`: For packing and unpacking data size information to ensure frames are sent correctly.
+
+Client Requirements (`client.py`):
+
+pyautogui==0.9.53
+opencv-python==4.8.0.74
+numpy==1.23.4
+
+
+Requirements for the Server-Side (Receiver and Saver)
+
+The server script relies on the following Python libraries:
+
+1. `cv2` (OpenCV): For handling image processing (saving images and displaying them in a window).
+2. `pickle`: For deserializing (converting) the byte stream back into image frames.
+3. `struct`: For packing and unpacking data size information to ensure frames are received correctly.
+4. `os`: For checking and creating directories where frames will be saved.
+5. `datetime`: For generating timestamps (if needed for filenames, though not strictly used in the code you provided).
+
+Server Requirements (`server.py`):
+
+opencv-python==4.8.0.74
+
+
+Common Requirements
+
+Both the client and server require the following shared libraries:
+
+- `pickle` and `struct` are part of Python’s standard library, so there is no need to install them separately.
+- `os` and `datetime` are also part of Python’s standard library and do not need to be installed.
+
+Requirements File (`requirements.txt`)
+
+To easily set up the dependencies for both the client and server, create a `requirements.txt` file that includes the necessary libraries:
+
+pyautogui==0.9.53
+opencv-python==4.8.0.74
+numpy==1.23.4
+
+
+Installation Instructions
+
+To install the necessary libraries, you can run the following command in your project directory (where the `requirements.txt` file is located):
+
+pip install -r requirements.txt
+
+
+This will install all the required dependencies for both the client and server scripts.
